@@ -17,7 +17,7 @@ spec:
         # Labels is used to filter the PRs that you want to target. (optional)
         # labels:
         # - preview-ready
-      requeueAfterSeconds: 1800
+      requeueAfterSeconds: 180
   template:
     metadata:
       name: 'myapp-{{.branch}}-{{.number}}'
@@ -34,4 +34,9 @@ spec:
       project: "default"
       destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: '{{.branch_slug}}'
+      syncPolicy:
+        automated:
+          prune: true  
+        syncOptions:
+        - CreateNamespace=true 
