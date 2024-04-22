@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+  namespace: argocd  
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - pullRequest:
+      github:
+        # The GitHub organization or user.
+        owner: kostis-codefresh
+        # The Github repository
+        repo: preview-env-source-code
+        # Reference to a Secret containing an access token. (optional)
+        # Labels is used to filter the PRs that you want to target. (optional)
+        # labels:
+        # - preview-ready
+      requeueAfterSeconds: 1800
+  template:
+    metadata:
+      name: 'myapp-{{.branch}}-{{.number}}'
+    spec:
+      source:
+        repoURL: 'https://github.com/kostis-codefresh/preview-env-manifests.git'
+        # targetRevision: '{{.head_sha}}'
+        targetRevision: HEAD
+        path: k8s/
+        # helm:
+        #   parameters:
+        #   - name: "image.tag"
+        #     value: "pull-{{.head_sha}}"
+      project: "default"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
