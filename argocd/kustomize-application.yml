@@ -16,10 +16,15 @@ spec:
             name: simple-deployment
           patch: |-
             - op: replace
-              path: /spec/template/spec/containers/0/env/0/
+              path: /spec/template/spec/containers/0/env/0
               value: 
                 name: GIT_BRANCH
-                value: 'replaced_branch'    
+                value: 'replaced_branch' 
+            - op: replace
+              path: /spec/template/spec/containers/0/env/1
+              value: 
+                name: GIT_HASH
+                value: 'replaced_hash'     
   destination:
     server: https://kubernetes.default.svc
     namespace: dummy-kustomize
