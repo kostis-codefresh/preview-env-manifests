@@ -9,15 +9,17 @@ spec:
     repoURL: https://github.com/kostis-codefresh/preview-env-manifests.git
     targetRevision: HEAD
     path: kustomize
-    # kustomize:
-    #   patches:
-    #     - target:
-    #         kind: Deployment
-    #         name: simple-deployment
-    #       patch: |-
-    #         - op: replace
-    #           path: /spec/template/spec/containers/0/ports/0/containerPort
-    #           value: 443    
+    kustomize:
+      patches:
+        - target:
+            kind: Deployment
+            name: simple-deployment
+          patch: |-
+            - op: replace
+              path: /spec/template/spec/containers/0/env/0/
+              value: 
+                name: GIT_BRANCH
+                value: 'replaced_branch'    
   destination:
     server: https://kubernetes.default.svc
     namespace: dummy-kustomize
