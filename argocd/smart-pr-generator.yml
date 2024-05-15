@@ -22,7 +22,7 @@ spec:
         path: kustomize-preview-app/
         kustomize:
           images:
-            - 'docker.io/kostiscodefresh/my-preview-app:{{.head_short_sha}}'        
+            - 'docker.io/kostiscodefresh/my-preview-app:{{.head_short_sha_7}}'        
           patches:
             - target:
                 kind: Deployment
@@ -37,7 +37,7 @@ spec:
                   path: /spec/template/spec/containers/0/env/1
                   value: 
                     name: GIT_HASH
-                    value: '{{.head_short_sha}}' 
+                    value: '{{.head_short_sha_7}}' 
       project: "default"
       destination:
         server: https://kubernetes.default.svc
