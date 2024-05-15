@@ -23,7 +23,7 @@ spec:
       project: "default"
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{.branch_slug}}'
+        namespace: 'preview-{{.branch_slug}}'
       syncPolicy:
         automated:
           prune: true  
