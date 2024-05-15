@@ -22,7 +22,7 @@ spec:
         path: kustomize-preview-app/ 
         kustomize:
           images:
-            - 'docker.io/kostiscodefresh/preview-env-source-code:{{.head_short_sha}}'
+            - 'docker.io/kostiscodefresh/my-preview-app:{{.head_short_sha}}'
       project: "default"
       destination:
         server: https://kubernetes.default.svc

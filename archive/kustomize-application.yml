@@ -11,7 +11,7 @@ spec:
     path: kustomize
     kustomize:
       images:
-        - docker.io/kostiscodefresh/preview-env-source-code:aff033f
+        - docker.io/kostiscodefresh/my-preview-app:aff033f
       patches:
         - target:
             kind: Deployment
