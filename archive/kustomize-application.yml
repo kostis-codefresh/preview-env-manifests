@@ -10,6 +10,8 @@ spec:
     targetRevision: HEAD
     path: kustomize
     kustomize:
+      images:
+        - docker.io/kostiscodefresh/preview-env-source-code:aff033f
       patches:
         - target:
             kind: Deployment

@@ -21,6 +21,8 @@ spec:
         targetRevision: HEAD
         path: kustomize-preview-app/
         kustomize:
+          images:
+            - 'docker.io/kostiscodefresh/preview-env-source-code:{{head_sha}}'        
           patches:
             - target:
                 kind: Deployment
