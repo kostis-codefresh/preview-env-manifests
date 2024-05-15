@@ -26,7 +26,23 @@ spec:
         repoURL: 'https://github.com/kostis-codefresh/preview-env-manifests.git'
         # targetRevision: '{{.head_sha}}'
         targetRevision: HEAD
-        path: kustomize/ 
+        path: kustomize/
+        kustomize:
+          patches:
+            - target:
+                kind: Deployment
+                name: simple-deployment
+              patch: |-
+                - op: replace
+                  path: /spec/template/spec/containers/0/env/0
+                  value: 
+                    name: GIT_BRANCH
+                    value: '{{.branch_slug}}' 
+                - op: replace
+                  path: /spec/template/spec/containers/0/env/1
+                  value: 
+                    name: GIT_HASH
+                    value: '{{.head_short_sha}}' 
       project: "default"
       destination:
         server: https://kubernetes.default.svc
