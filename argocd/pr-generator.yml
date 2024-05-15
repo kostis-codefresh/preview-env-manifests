@@ -19,7 +19,7 @@ spec:
       source:
         repoURL: 'https://github.com/kostis-codefresh/preview-env-manifests.git'
         targetRevision: HEAD
-        path: kustomize/ 
+        path: kustomize-preview-app/ 
       project: "default"
       destination:
         server: https://kubernetes.default.svc
