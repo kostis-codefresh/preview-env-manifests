@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/kostis-codefresh/preview-env-manifests.git
     targetRevision: HEAD
-    path: kustomize
+    path: kustomize-preview-app/
     kustomize:
       images:
         - docker.io/kostiscodefresh/my-preview-app:aff033f

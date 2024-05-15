@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webserver-simple
-        image: docker.io/kostiscodefresh/my-preview-app:latest
+        image: docker.io/kostiscodefresh/my-preview-app
         ports:
         - containerPort: 8080
         env:
